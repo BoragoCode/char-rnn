@@ -22,6 +22,7 @@ seq_length = 25 # number of steps to unroll the RNN for
 learning_rate = 0.005
 iter = 50
 save_freq = 5 #The step (counted by the number of iterations) at which the model is saved to hard disk.
+idx_of_begin = chars.index(u'^') #begin character
 
 print 'Compile the model...'
 
@@ -90,7 +91,6 @@ p = 0
 n = 0
 loss = 0
 i = 1
-idx_of_begin = chars.index(u'^')
 
 print 'Begin training...'
 while(i<=iter):
