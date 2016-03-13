@@ -23,6 +23,7 @@ learning_rate = 0.005
 iter = 50
 save_freq = 5 #The step (counted by the number of iterations) at which the model is saved to hard disk.
 idx_of_begin = chars.index(u'^') #begin character
+len_of_sample = 100 #The number of characters by sample
 
 print 'Compile the model...'
 
@@ -104,7 +105,7 @@ while(i<=iter):
         if i%save_freq == 0:
             print('save model:iter = %i' % i)
             dumpModel('model'+str(i)) #save the model
-            out = sample(idx_of_begin, 50)
+            out = sample(idx_of_begin, len_of_sample)
             print 'sample:',out
             
         loss = 0
