@@ -22,7 +22,7 @@ char-rnn.py文件里面有以下参数可以设定：
 - seq_length：RNN展开的步骤数
 - learning_rate：学习率
 - iter：迭代次数
-- save_freq：每迭代多少次保存一次模型
+- save_freq：每迭代多少次保存一次模型，同时进行一次生成
 - idx_of_begin：生成语段的起始字符
 - len_of_sample：生成语段的字符数目
 
