@@ -54,7 +54,7 @@ class GRU():
         def recurrent_gn(hs, idx):
             h_t, ps = self.recurrent_fn(idx, hs)
             
-            y_i = T.argmax(ps)
+            y_i = T.argmax(ps) #using a greedy strategy
 
             return h_t, y_i
 

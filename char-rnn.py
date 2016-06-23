@@ -46,7 +46,7 @@ def sharedX(value, name=None, borrow=False, dtype=None):
                          name=name,
                          borrow=borrow)
 
-def compute_updates(training_cost, params):
+def compute_updates(training_cost, params): #adagrad update
     updates = []
     
     grads = T.grad(training_cost, params)
@@ -82,7 +82,7 @@ def loadModel(filename):
         param_list[i].set_value(cPickle.load(load_file), borrow = True)
     load_file.close()
 
-def sample(seed_ix, n):
+def sample(seed_ix, n): #generate a text that contains n characters. 
     out = sample_model(seed_ix, n)
     out = out[0].tolist()
     essay = ''.join([ix_to_char[i] for i in out])
@@ -105,7 +105,7 @@ while(i<=iter):
         if i%save_freq == 0:
             print('save model:iter = %i' % i)
             dumpModel('model'+str(i)) #save the model
-            out = sample(idx_of_begin, len_of_sample)
+            out = sample(idx_of_begin, len_of_sample) #generate a text that contains len_of_sample characters
             print 'sample:',out
             
         loss = 0
