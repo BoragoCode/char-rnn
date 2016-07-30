@@ -19,7 +19,7 @@
 
 char-rnn.py文件里面有以下参数可以设定：
 - hidden_size：神经网络隐含层的维度
-- seq_length：RNN展开的步骤数
+- seq_length：RNN展开的步骤数（每次训练多少个字符）
 - learning_rate：学习率
 - iter：迭代次数
 - save_freq：每迭代多少次保存一次模型，同时进行一次生成
