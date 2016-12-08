@@ -33,9 +33,9 @@ training_y = T.ivector('y_data')
 h0 = theano.shared(value=np.zeros((1, hidden_size),dtype='float32'), name='h0')
 
 gru = RNN.GRU(vocab_size, hidden_size)
-Probs = gru.build_GRU(training_x, h0)
+Probs = gru.build_GRU(training_x, h0) #the t-th line of Probs denote probability distribution of vocabulary in t-time step
 
-target_probs = T.diag(Probs.T[training_y])
+target_probs = T.diag(Probs.T[training_y]) #T.diag reture the diagonal of matrix
 cost = -T.log(target_probs)
 training_cost = T.sum(cost)
 
