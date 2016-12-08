@@ -8,7 +8,7 @@
 ###运行说明
 在命令行中输入：
 
-    python char-rnn.py [训练语料]
+    THEANO_FLAGS='mode=FAST_RUN,floatX=float32' python char-rnn.py [训练语料]
 
 若机器上有GPU，可以使用GPU进行训练，速度比CPU能快很多，输入命令改为：
 
