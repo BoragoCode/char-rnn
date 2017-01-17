@@ -33,7 +33,7 @@ class GRU():
         rs_t = T.nnet.sigmoid(T.dot(x, self.Ws_in_r) + T.dot(ht, self.Ws_hh_r) + self.bs_r)
         zs_t = T.nnet.sigmoid(T.dot(x, self.Ws_in_z) + T.dot(ht, self.Ws_hh_z) + self.bs_z)
         hs_tilde = T.tanh(T.dot(x, self.Ws_in) + T.dot(rs_t * ht, self.Ws_hh) + self.bs_hh)
-        hs_update = (np.float32(1.) - zs_t) * ht + zs_t * hs_tilde
+        hs_update = zs_t * ht + (np.float32(1.) - zs_t) * hs_tilde
         
         ys = T.dot(hs_update, self.Why) + self.by
         ps = T.exp(ys)/T.sum(T.exp(ys))
