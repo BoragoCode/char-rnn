@@ -4,7 +4,6 @@
 ------------------------------------------------------------
 参照karpathy公布的代码，我用theano重写了该模型，使模型能够支持中文文本，同时将源程序中的RNN模型替换成了[GRU(Cho et al., 2014b)](http://arxiv.org/abs/1406.1078)。GRU，和LSTM一样解决了基本RNN模型在长序列上的梯度消失或梯度爆炸问题([Bengio et al., 1994](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=279181&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D279181))，然而GRU和LSTM的效果差不多却比LSTM更简单([Greff et al., 2015](http://arxiv.org/abs/1503.04069))。陆陆续续有研究者开始在英文上使用char-rnn，有论文证实char-rnn比以词为输入的rnn模型要好，它有一个优势就是可以解决未登录词的问题([Dhingra et al., 2016](http://arxiv.org/abs/1605.03481))。然而，char-rnn训练中文语料还有另外一个优势是不用对中文进行分词，模型输入单元为一个一个的字，这样可以避免分词带来的一些错误，所以采用char-rnn在中文语料上就两个好处。利用在大规模中文文本上训练好的模型，可以生成一篇短文(生成的时候也是一个字一个字的产生)。具体可以参考karpathy写的一篇[blog](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)。
 
-================================
 ###运行说明
 在命令行中输入：
 
@@ -26,7 +25,6 @@ char-rnn.py文件里面有以下参数可以设定：
 - idx_of_begin：生成语段的起始字符
 - len_of_sample：生成语段的字符数目
 
-========================================================
 ###实验结果
 本实验选取了大量和“选择”相关的作文作为训练语料，在生成的时候起始符设定为“选”字，生成字符设定为100个字符，以下是部分生成结果（训练语料规模：1.12M）：
 
